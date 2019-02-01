@@ -120,7 +120,6 @@ namespace Board_Explorer
 
         public void search()
         {
-            clearList();
             page = 1;
             if (online) {
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -137,7 +136,6 @@ namespace Board_Explorer
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            clearList();
             page++;
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("page", page);
@@ -145,14 +143,9 @@ namespace Board_Explorer
             LoadPosts(posts);
         }
 
-        public void clearList()
-        {
-            lstView.Items.Clear();
-            imgList.Images.Clear();
-        }
-
         private void LoadPosts(List<Post> posts)
         {
+            ClearUI();
             strProgress.Minimum = 0;
             strProgress.Maximum = posts.Count();
             strProgress.Value = 0;
@@ -271,10 +264,22 @@ namespace Board_Explorer
             return File.Exists(Path.Combine(thumbsDirectory, post.md5 + "." + post.file_ext));
         }
 
-        
+        public void ClearUI()
+        {
+            lstView.Items.Clear();
+            imgList.Images.Clear();
+
+            lblID.Text = "ID:";
+            lblRating.Text = "Rating:";
+            lblScore.Text = "Score:";
+            lblFavorites.Text = "Favorites:";
+            lstTags.Items.Clear();
+        }
 
         public void lstView_MouseClick(object sender, MouseEventArgs e)
         {
+            ClearUI();
+
             ListViewItem item = lstView.GetItemAt(e.X, e.Y);
             if (item != null)
             {
@@ -479,8 +484,6 @@ namespace Board_Explorer
 
             var colPosts = local_db.GetCollection<Post>("post");
             posts = colPosts.Find(Query.In("_id", ids.ToArray())).ToList();
-
-            clearList();
 
             LoadPosts(posts);
         }
