@@ -12,7 +12,7 @@ namespace Board_Explorer
 
         public static string Search(String username)
         {
-            return Post.Search("favoritedby:" + username);
+            return Post.Search("fav:" + username);
         }
     }
 }
