@@ -277,9 +277,7 @@ namespace Board_Explorer
         }
 
         public void lstView_MouseClick(object sender, MouseEventArgs e)
-        {
-            ClearUI();
-
+        { 
             ListViewItem item = lstView.GetItemAt(e.X, e.Y);
             if (item != null)
             {
