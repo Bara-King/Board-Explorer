@@ -129,6 +129,11 @@ namespace Board_Explorer
                 posts = localPosts.Find(x => x.tags.Contains(txtTags.Text)).ToList();
             }
 
+            if(posts.Count == 0)
+            {
+                MessageBox.Show("No results found.", "Search", MessageBoxButtons.OK);
+            }
+
             LoadPosts(posts);
         }
 
