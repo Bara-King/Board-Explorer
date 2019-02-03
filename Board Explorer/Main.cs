@@ -394,8 +394,7 @@ namespace Board_Explorer
 
         private void ctxItemFavorite_Click(object sender, EventArgs e)
         {
-            Post find = posts.Find(item => item.id == post_id);
-            Boolean online = post.Favorite(find);
+            Boolean online = post.Favorite(post_id);
             if (online)
             {
                 staStatusLabel.Text = "Post #" + post_id + " added online and locally to favorites.";
@@ -526,8 +525,7 @@ namespace Board_Explorer
 
         private void ctxItemVoteUp_Click(object sender, EventArgs e)
         {
-            Post find = posts.Find(item => item.id == post_id);
-            Boolean online = post.Vote(find, 1);
+            Boolean online = post.Vote(post_id, 1);
 
             if (online)
             {
@@ -541,8 +539,7 @@ namespace Board_Explorer
 
         private void ctxItemVoteDown_Click(object sender, EventArgs e)
         {
-            Post find = posts.Find(item => item.id == post_id);
-            Boolean online = post.Vote(find, -1);
+            Boolean online = post.Vote(post_id, -1);
 
             if (online)
             {

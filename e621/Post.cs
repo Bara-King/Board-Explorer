@@ -101,51 +101,41 @@ namespace e621
             onDownloadCompleted?.Invoke(this, e);
         }
 
-        public Boolean Favorite(Post post)
+        public Boolean Favorite(int post_id)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://e621.net/favorite/create.json");
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("id", post_id);
 
-            var postData = "id=" + post.id;
-            postData += "&login=" + Username;
-            postData += "&password_hash=" + Apikey;
-            var data = Encoding.ASCII.GetBytes(postData);
-
-            request.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)";
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
-
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-
-            try
-            {
-                var response = (HttpWebResponse)request.GetResponse();
-
-                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-                Response json = JsonConvert.DeserializeObject<Response>(responseString);
-
-                return json.success;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-                        
+            return MakePost("/favorite/create.json", parameters);                        
         }
 
-        public Boolean Vote(Post post, int score)
+        public Boolean UnFavorite(int post_id)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://e621.net/post/vote.json");
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("id", post_id);
 
-            var postData = "id=" + post.id;
-            postData += "&login=" + Username;
-            postData += "&password_hash=" + Apikey;
-            postData += "&score=" + score.ToString();
-            var data = Encoding.ASCII.GetBytes(postData);
+            return MakePost("/favorite/destroy.json", parameters);
+        }
+
+        public Boolean Vote(int post_id, int score)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("id", post_id);
+            parameters.Add("score", score);
+
+            return MakePost("/post/vote.json", parameters);
+        }
+
+        private Boolean MakePost(String endpoint, Dictionary<string, object> arguments)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://e621.net" + endpoint);
+
+            arguments.Add("login", Username);
+            arguments.Add("password_hash", Apikey);
+
+            string parameters = string.Join("&", arguments.Select(kvp => string.Format("{0}={1}", kvp.Key, kvp.Value)));
+
+            var data = Encoding.ASCII.GetBytes(parameters);
 
             request.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)";
             request.Method = "POST";
