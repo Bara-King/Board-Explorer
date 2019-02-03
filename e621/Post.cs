@@ -136,11 +136,52 @@ namespace e621
             }
                         
         }
+
+        public Boolean Vote(Post post, int score)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://e621.net/post/vote.json");
+
+            var postData = "id=" + post.id;
+            postData += "&login=" + Username;
+            postData += "&password_hash=" + Apikey;
+            postData += "&score=" + score.ToString();
+            var data = Encoding.ASCII.GetBytes(postData);
+
+            request.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)";
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            try
+            {
+                var response = (HttpWebResponse)request.GetResponse();
+
+                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                Response json = JsonConvert.DeserializeObject<Response>(responseString);
+
+                return json.success;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         
     }
 
     internal class Response
     {
+        public int post_id;
+
         public Boolean success;
+
+        public int score;
+        public int change;
     }
 }
