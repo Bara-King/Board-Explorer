@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using LiteDB;
@@ -43,6 +38,9 @@ namespace Board_Explorer
         {
             InitializeComponent();
 
+            ntfMain.Icon = this.Icon;
+            ntfMain.Text = this.Text;
+
             saveDirectory = Board_Explorer.Properties.Settings.Default.SaveDir;
 
             thumbsDirectory = Path.Combine(saveDirectory, "thumbs");
@@ -54,15 +52,15 @@ namespace Board_Explorer
             post.Username = Board_Explorer.Properties.Settings.Default.Username;
             post.Apikey = Board_Explorer.Properties.Settings.Default.Apikey;
 
-            imgList.Images.Clear();
+            imgPosts.Images.Clear();
             lstView.Clear();
 
             btnNext.Hide();
 
-            imgList.ImageSize = new Size(150, 150);
-            imgList.ColorDepth = ColorDepth.Depth32Bit;
+            imgPosts.ImageSize = new Size(150, 150);
+            imgPosts.ColorDepth = ColorDepth.Depth32Bit;
 
-            lstView.LargeImageList = imgList;
+            lstView.LargeImageList = imgPosts;
 
             lstView.MouseClick += lstView_MouseClick;
             lstView.DoubleClick += lstView_DoubleClick;
@@ -196,7 +194,7 @@ namespace Board_Explorer
 
             try
             {
-                imgList.Images.Add(post.id.ToString(), Utilities.FitThumb(bmp, 150, 150));
+                imgPosts.Images.Add(post.id.ToString(), Utilities.FitThumb(bmp, 150, 150));
             }
             catch (Exception ex)
             {
@@ -207,12 +205,12 @@ namespace Board_Explorer
             {
                 lstView.Invoke(new MethodInvoker(delegate
                 {
-                    lstView.Items.Add(post.id.ToString(), imgList.Images.IndexOfKey(post.id.ToString()));
+                    lstView.Items.Add(post.id.ToString(), imgPosts.Images.IndexOfKey(post.id.ToString()));
                 }));
             }
             else
             {
-                lstView.Items.Add(post.id.ToString(), imgList.Images.IndexOfKey(post.id.ToString()));
+                lstView.Items.Add(post.id.ToString(), imgPosts.Images.IndexOfKey(post.id.ToString()));
             }
 
             BeginInvoke((Action)(() => strProgress.PerformStep()));
@@ -267,7 +265,7 @@ namespace Board_Explorer
         public void ClearUI()
         {
             lstView.Items.Clear();
-            imgList.Images.Clear();
+            imgPosts.Images.Clear();
 
             lblID.Text = "ID:";
             lblRating.Text = "Rating:";
@@ -309,16 +307,17 @@ namespace Board_Explorer
                     
                     item.Selected = true;
 
-                    
                     var favorites = local_db.GetCollection<Favorite>("favorite");
                     var favorite = favorites.FindOne(x => x.id == post_id);
 
                     if (favorite != null)
                     {
+                        ctxItemFavorite.Image = Properties.Resources.heart_delete;
                         ctxItemFavorite.Text = "Remove Favorite";
                     }
                     else
                     {
+                        ctxItemFavorite.Image = Properties.Resources.heart_add;
                         ctxItemFavorite.Text = "Add Favorite";
                     }
 
@@ -430,11 +429,15 @@ namespace Board_Explorer
 
         private void onlineModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            toolStripSplitButton1.Image = Properties.Resources.bullet_green;
+            toolStripSplitButton1.Name = "Online";
             online = true;
         }
 
         private void offlineModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            toolStripSplitButton1.Image = Properties.Resources.bullet_red;
+            toolStripSplitButton1.Name = "Offline";
             online = false;
         }
 
@@ -451,14 +454,18 @@ namespace Board_Explorer
 
         private void mnuDownloadAll_Click(object sender, EventArgs e)
         {
-            strProgress.Minimum = 0;
-            strProgress.Maximum = posts.Count();
-
-            foreach (Post post in posts)
+            if (posts.Count > 0)
             {
-                post.Download();
+                strProgress.Minimum = 0;
+                strProgress.Maximum = posts.Count;
+                strProgress.Value = 0;
 
-                post.onDownloadCompleted += FileDownloaded;
+                foreach (Post post in posts)
+                {
+                    post.Download();
+
+                    post.onDownloadCompleted += FileDownloaded;
+                }
             }
         }
 
@@ -512,5 +519,34 @@ namespace Board_Explorer
             System.Diagnostics.Process.Start("https://github.com/goatmew/Board-Explorer/releases");
         }
 
+        private void ctxItemVoteUp_Click(object sender, EventArgs e)
+        {
+            Post find = posts.Find(item => item.id == post_id);
+            Boolean online = post.Vote(find, 1);
+
+            if (online)
+            {
+                staStatusLabel.Text = "Post #" + post_id + " added voted up.";
+            }
+            else
+            {
+                staStatusLabel.Text = "Online connection failed.";
+            }
+        }
+
+        private void ctxItemVoteDown_Click(object sender, EventArgs e)
+        {
+            Post find = posts.Find(item => item.id == post_id);
+            Boolean online = post.Vote(find, -1);
+
+            if (online)
+            {
+                staStatusLabel.Text = "Post #" + post_id + " added voted down.";
+            }
+            else
+            {
+                staStatusLabel.Text = "Online connection failed.";
+            }
+        }
     }
 }
