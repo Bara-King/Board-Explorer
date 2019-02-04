@@ -564,7 +564,6 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Board Explorer";
-            this.Load += new System.EventHandler(this.Main_Load);
             this.ctxPost.ResumeLayout(false);
             this.staStrip.ResumeLayout(false);
             this.staStrip.PerformLayout();

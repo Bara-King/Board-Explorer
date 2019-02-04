@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Board Explorer", "Board Exp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e621", "e621\e621.csproj", "{858D45CA-EC7B-4E2D-B29E-E8D7206250B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booru", "Booru\Booru.csproj", "{35B98858-A8CB-4EF6-9560-599C024ADF76}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{858D45CA-EC7B-4E2D-B29E-E8D7206250B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{858D45CA-EC7B-4E2D-B29E-E8D7206250B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{858D45CA-EC7B-4E2D-B29E-E8D7206250B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{35B98858-A8CB-4EF6-9560-599C024ADF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35B98858-A8CB-4EF6-9560-599C024ADF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35B98858-A8CB-4EF6-9560-599C024ADF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35B98858-A8CB-4EF6-9560-599C024ADF76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
