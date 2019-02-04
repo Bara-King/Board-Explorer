@@ -72,6 +72,8 @@ namespace Board_Explorer
             lstTags.DoubleClick += lstTags_DoubleClick;
 
             checkUpdatesAsync();
+
+
         }
 
         public async void checkUpdatesAsync()
@@ -144,6 +146,7 @@ namespace Board_Explorer
             page++;
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("page", page);
+            parameters.Add("limit", limit);
             posts = JsonConvert.DeserializeObject<List<Post>>(Post.Search(txtTags.Text, parameters));
             LoadPosts(posts);
         }

@@ -127,15 +127,6 @@
     <value>199, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripSplitButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACsSURBVDhPYxgFuIFXD8N0jy6G/26dDP9BNIgPlSIMQIqT
-        5wv8336r5P/ee1VgGsQn2hBPoI1bbqX97zsm97/jsBiYBvFB4lAl+IEH0Nkzz6v+rz/A8L9uHwOYBvFB
-        4lAl+IEX0KbO4wz/u04A6WNQGsgHiUOV4AdO1QxrYmYz/J9wjuH/lIsQGsQHiUOVEARyIMUgGz2BzgbR
-        UM1yEGniAEixMRImSfPIAQwMANdlXwj/kqawAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="onlineModeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -144,6 +135,15 @@
         Dl/aagEw7m4qvM/6fHgOTKLD661VCiK5uMt6PEsDnpyrJtHh9dYqBaF8e3Wv8fhEPDqSSXR4vbVKQUsu
         xRfi5CqZvlM6vN5apaAxpG1nTTy/ES8eeaLD661VPpIowBgXI/k2Eh2+tNXCyPwFQv0L9PJWC1+c0gen
         9MEpf4fpBaa4tNayOj+nAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripSplitButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACsSURBVDhPYxgFuIFXD8N0jy6G/26dDP9BNIgPlSIMQIqT
+        5wv8336r5P/ee1VgGsQn2hBPoI1bbqX97zsm97/jsBiYBvFB4lAl+IEH0Nkzz6v+rz/A8L9uHwOYBvFB
+        4lAl+IEX0KbO4wz/u04A6WNQGsgHiUOV4AdO1QxrYmYz/J9wjuH/lIsQGsQHiUOVEARyIMUgGz2BzgbR
+        UM1yEGniAEixMRImSfPIAQwMANdlXwj/kqawAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="mnuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

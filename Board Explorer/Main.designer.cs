@@ -43,6 +43,8 @@
             this.ctxItemVoteDown = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxItemDownload = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuShare = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTelegram = new System.Windows.Forms.ToolStripMenuItem();
             this.staStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +57,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPosts = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFavorites = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFindByMd5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuDownloadAll = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,6 +70,12 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDimensions = new System.Windows.Forms.Label();
+            this.lblFilesize = new System.Windows.Forms.Label();
+            this.lblArtist = new System.Windows.Forms.Label();
+            this.lblMd5 = new System.Windows.Forms.Label();
+            this.lnkSource = new System.Windows.Forms.LinkLabel();
+            this.lblSource = new System.Windows.Forms.Label();
             this.lblFavorites = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.lblRating = new System.Windows.Forms.Label();
@@ -74,16 +84,6 @@
             this.lstTags = new System.Windows.Forms.ListBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.ntfMain = new System.Windows.Forms.NotifyIcon(this.components);
-            this.lblSource = new System.Windows.Forms.Label();
-            this.lnkSource = new System.Windows.Forms.LinkLabel();
-            this.lblMd5 = new System.Windows.Forms.Label();
-            this.lblArtist = new System.Windows.Forms.Label();
-            this.mnuFindByMd5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuShare = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTelegram = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblFilesize = new System.Windows.Forms.Label();
-            this.lblDimensions = new System.Windows.Forms.Label();
             this.ctxPost.SuspendLayout();
             this.staStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
@@ -193,6 +193,21 @@
             this.ctxItemDownload.Text = "Download";
             this.ctxItemDownload.Click += new System.EventHandler(this.ctxItemDownload_Click);
             // 
+            // mnuShare
+            // 
+            this.mnuShare.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuTelegram});
+            this.mnuShare.Name = "mnuShare";
+            this.mnuShare.Size = new System.Drawing.Size(147, 22);
+            this.mnuShare.Text = "Share";
+            // 
+            // mnuTelegram
+            // 
+            this.mnuTelegram.Name = "mnuTelegram";
+            this.mnuTelegram.Size = new System.Drawing.Size(123, 22);
+            this.mnuTelegram.Text = "Telegram";
+            this.mnuTelegram.Click += new System.EventHandler(this.mnuTelegram_Click);
+            // 
             // staStrip
             // 
             this.staStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -298,6 +313,18 @@
             this.mnuFavorites.Text = "Load Favorites";
             this.mnuFavorites.Click += new System.EventHandler(this.mnuFavorites_Click);
             // 
+            // mnuFindByMd5
+            // 
+            this.mnuFindByMd5.Name = "mnuFindByMd5";
+            this.mnuFindByMd5.Size = new System.Drawing.Size(182, 22);
+            this.mnuFindByMd5.Text = "Find By Image";
+            this.mnuFindByMd5.Click += new System.EventHandler(this.mnuFindByMd5_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(179, 6);
+            // 
             // mnuDownloadAll
             // 
             this.mnuDownloadAll.Name = "mnuDownloadAll";
@@ -394,6 +421,62 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Info";
             // 
+            // lblDimensions
+            // 
+            this.lblDimensions.AutoSize = true;
+            this.lblDimensions.Location = new System.Drawing.Point(6, 190);
+            this.lblDimensions.Name = "lblDimensions";
+            this.lblDimensions.Size = new System.Drawing.Size(64, 13);
+            this.lblDimensions.TabIndex = 12;
+            this.lblDimensions.Text = "Dimensions:";
+            // 
+            // lblFilesize
+            // 
+            this.lblFilesize.AutoSize = true;
+            this.lblFilesize.Location = new System.Drawing.Point(6, 170);
+            this.lblFilesize.Name = "lblFilesize";
+            this.lblFilesize.Size = new System.Drawing.Size(44, 13);
+            this.lblFilesize.TabIndex = 11;
+            this.lblFilesize.Text = "Filesize:";
+            // 
+            // lblArtist
+            // 
+            this.lblArtist.AutoSize = true;
+            this.lblArtist.Location = new System.Drawing.Point(6, 130);
+            this.lblArtist.Name = "lblArtist";
+            this.lblArtist.Size = new System.Drawing.Size(33, 13);
+            this.lblArtist.TabIndex = 10;
+            this.lblArtist.Text = "Artist:";
+            // 
+            // lblMd5
+            // 
+            this.lblMd5.AutoSize = true;
+            this.lblMd5.Location = new System.Drawing.Point(6, 50);
+            this.lblMd5.Name = "lblMd5";
+            this.lblMd5.Size = new System.Drawing.Size(33, 13);
+            this.lblMd5.TabIndex = 8;
+            this.lblMd5.Text = "MD5:";
+            // 
+            // lnkSource
+            // 
+            this.lnkSource.AutoSize = true;
+            this.lnkSource.Location = new System.Drawing.Point(56, 150);
+            this.lnkSource.Name = "lnkSource";
+            this.lnkSource.Size = new System.Drawing.Size(27, 13);
+            this.lnkSource.TabIndex = 7;
+            this.lnkSource.TabStop = true;
+            this.lnkSource.Text = "Link";
+            this.lnkSource.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSource_LinkClicked);
+            // 
+            // lblSource
+            // 
+            this.lblSource.AutoSize = true;
+            this.lblSource.Location = new System.Drawing.Point(6, 150);
+            this.lblSource.Name = "lblSource";
+            this.lblSource.Size = new System.Drawing.Size(44, 13);
+            this.lblSource.TabIndex = 6;
+            this.lblSource.Text = "Source:";
+            // 
             // lblFavorites
             // 
             this.lblFavorites.AutoSize = true;
@@ -464,89 +547,6 @@
             this.ntfMain.Text = "ntfMain";
             this.ntfMain.Visible = true;
             // 
-            // lblSource
-            // 
-            this.lblSource.AutoSize = true;
-            this.lblSource.Location = new System.Drawing.Point(6, 150);
-            this.lblSource.Name = "lblSource";
-            this.lblSource.Size = new System.Drawing.Size(44, 13);
-            this.lblSource.TabIndex = 6;
-            this.lblSource.Text = "Source:";
-            // 
-            // lnkSource
-            // 
-            this.lnkSource.AutoSize = true;
-            this.lnkSource.Location = new System.Drawing.Point(56, 150);
-            this.lnkSource.Name = "lnkSource";
-            this.lnkSource.Size = new System.Drawing.Size(27, 13);
-            this.lnkSource.TabIndex = 7;
-            this.lnkSource.TabStop = true;
-            this.lnkSource.Text = "Link";
-            this.lnkSource.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSource_LinkClicked);
-            // 
-            // lblMd5
-            // 
-            this.lblMd5.AutoSize = true;
-            this.lblMd5.Location = new System.Drawing.Point(6, 50);
-            this.lblMd5.Name = "lblMd5";
-            this.lblMd5.Size = new System.Drawing.Size(33, 13);
-            this.lblMd5.TabIndex = 8;
-            this.lblMd5.Text = "MD5:";
-            // 
-            // lblArtist
-            // 
-            this.lblArtist.AutoSize = true;
-            this.lblArtist.Location = new System.Drawing.Point(6, 130);
-            this.lblArtist.Name = "lblArtist";
-            this.lblArtist.Size = new System.Drawing.Size(33, 13);
-            this.lblArtist.TabIndex = 10;
-            this.lblArtist.Text = "Artist:";
-            // 
-            // mnuFindByMd5
-            // 
-            this.mnuFindByMd5.Name = "mnuFindByMd5";
-            this.mnuFindByMd5.Size = new System.Drawing.Size(182, 22);
-            this.mnuFindByMd5.Text = "Find By Image";
-            this.mnuFindByMd5.Click += new System.EventHandler(this.mnuFindByMd5_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(179, 6);
-            // 
-            // mnuShare
-            // 
-            this.mnuShare.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuTelegram});
-            this.mnuShare.Name = "mnuShare";
-            this.mnuShare.Size = new System.Drawing.Size(147, 22);
-            this.mnuShare.Text = "Share";
-            // 
-            // mnuTelegram
-            // 
-            this.mnuTelegram.Name = "mnuTelegram";
-            this.mnuTelegram.Size = new System.Drawing.Size(180, 22);
-            this.mnuTelegram.Text = "Telegram";
-            this.mnuTelegram.Click += new System.EventHandler(this.mnuTelegram_Click);
-            // 
-            // lblFilesize
-            // 
-            this.lblFilesize.AutoSize = true;
-            this.lblFilesize.Location = new System.Drawing.Point(6, 170);
-            this.lblFilesize.Name = "lblFilesize";
-            this.lblFilesize.Size = new System.Drawing.Size(44, 13);
-            this.lblFilesize.TabIndex = 11;
-            this.lblFilesize.Text = "Filesize:";
-            // 
-            // lblDimensions
-            // 
-            this.lblDimensions.AutoSize = true;
-            this.lblDimensions.Location = new System.Drawing.Point(6, 190);
-            this.lblDimensions.Name = "lblDimensions";
-            this.lblDimensions.Size = new System.Drawing.Size(64, 13);
-            this.lblDimensions.TabIndex = 12;
-            this.lblDimensions.Text = "Dimensions:";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,6 +564,7 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Board Explorer";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.ctxPost.ResumeLayout(false);
             this.staStrip.ResumeLayout(false);
             this.staStrip.PerformLayout();
