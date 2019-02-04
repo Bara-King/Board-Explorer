@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 
 namespace Board_Explorer
 {
@@ -88,6 +89,18 @@ namespace Board_Explorer
         public static void OnDownloadCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             onDownloadCompleted(null, EventArgs.Empty);
+        }
+
+        public static string CalculateMD5(string filename)
+        {
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(filename))
+                {
+                    var hash = md5.ComputeHash(stream);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+                }
+            }
         }
     }
 }

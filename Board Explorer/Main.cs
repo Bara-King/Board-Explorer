@@ -273,9 +273,13 @@ namespace Board_Explorer
             imgPosts.Images.Clear();
 
             lblID.Text = "ID:";
+            lblMd5.Text = "MD5: ";
             lblRating.Text = "Rating:";
             lblScore.Text = "Score:";
             lblFavorites.Text = "Favorites:";
+            lblArtist.Text = "Artist:";
+            lnkSource.Links.Clear();
+            lnkSource.Visible = false;
             lstTags.Items.Clear();
         }
 
@@ -295,9 +299,22 @@ namespace Board_Explorer
             };
 
             lblID.Text = "ID: #" + post.id.ToString();
+            lblMd5.Text = "MD5: " + post.md5;
             lblRating.Text = "Rating: " + rating[post.rating];
             lblScore.Text = "Score: " + post.score.ToString();
             lblFavorites.Text = "Favorites: " + post.fav_count;
+            if (post.artist.Count > 0) {
+                lblArtist.Text = "Artist: " + post.artist[0];
+            }
+            else
+            {
+                lblArtist.Text = "Artist:";
+            }
+             
+            lnkSource.Links.Clear();
+
+            lnkSource.Links.Add(0, 4, post.source);
+            lnkSource.Visible = true;
 
             lstTags.Items.Clear();
             foreach(string tag in post.tags.Split(null))
@@ -548,6 +565,27 @@ namespace Board_Explorer
             else
             {
                 staStatusLabel.Text = "Online connection failed.";
+            }
+        }
+
+        private void lnkSource_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LinkLabel linkLabel = (LinkLabel)sender;
+            System.Diagnostics.Process.Start(linkLabel.Links[0].LinkData.ToString());
+        }
+
+        private void mnuFindByMd5_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            
+            if (DialogResult.OK == fileDialog.ShowDialog())
+            {
+                String file = fileDialog.FileName;
+
+                String md5 = Utilities.CalculateMD5(file);
+
+                txtTags.Text = "MD5:" + md5;
+                search();
             }
         }
     }

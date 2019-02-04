@@ -37,8 +37,16 @@
             this.ctxPost = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxItemOne621 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxItemFavorite = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxItemVoteUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxItemVoteDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxItemDownload = new System.Windows.Forms.ToolStripMenuItem();
             this.staStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.strProgress = new System.Windows.Forms.ToolStripProgressBar();
@@ -66,14 +74,12 @@
             this.lstTags = new System.Windows.Forms.ListBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.ntfMain = new System.Windows.Forms.NotifyIcon(this.components);
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.onlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxItemFavorite = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxItemVoteUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxItemVoteDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblSource = new System.Windows.Forms.Label();
+            this.lnkSource = new System.Windows.Forms.LinkLabel();
+            this.lblMd5 = new System.Windows.Forms.Label();
+            this.lblArtist = new System.Windows.Forms.Label();
+            this.mnuFindByMd5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxPost.SuspendLayout();
             this.staStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
@@ -110,7 +116,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstView.Location = new System.Drawing.Point(12, 56);
             this.lstView.Name = "lstView";
-            this.lstView.Size = new System.Drawing.Size(690, 400);
+            this.lstView.Size = new System.Drawing.Size(666, 400);
             this.lstView.TabIndex = 2;
             this.lstView.UseCompatibleStateImageBehavior = false;
             // 
@@ -126,25 +132,59 @@
             this.toolStripSeparator5,
             this.ctxItemDownload});
             this.ctxPost.Name = "ctxPost";
-            this.ctxPost.Size = new System.Drawing.Size(181, 154);
+            this.ctxPost.Size = new System.Drawing.Size(148, 132);
             // 
             // ctxItemOne621
             // 
             this.ctxItemOne621.Name = "ctxItemOne621";
-            this.ctxItemOne621.Size = new System.Drawing.Size(180, 22);
+            this.ctxItemOne621.Size = new System.Drawing.Size(147, 22);
             this.ctxItemOne621.Text = "Open on e621";
             this.ctxItemOne621.Click += new System.EventHandler(this.ctxItemOne621_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(144, 6);
+            // 
+            // ctxItemFavorite
+            // 
+            this.ctxItemFavorite.Image = global::Board_Explorer.Properties.Resources.heart_add;
+            this.ctxItemFavorite.Name = "ctxItemFavorite";
+            this.ctxItemFavorite.Size = new System.Drawing.Size(147, 22);
+            this.ctxItemFavorite.Text = "Favorite";
+            this.ctxItemFavorite.Click += new System.EventHandler(this.ctxItemFavorite_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(144, 6);
+            // 
+            // ctxItemVoteUp
+            // 
+            this.ctxItemVoteUp.Image = global::Board_Explorer.Properties.Resources.arrow_up;
+            this.ctxItemVoteUp.Name = "ctxItemVoteUp";
+            this.ctxItemVoteUp.Size = new System.Drawing.Size(147, 22);
+            this.ctxItemVoteUp.Text = "Vote Up";
+            this.ctxItemVoteUp.Click += new System.EventHandler(this.ctxItemVoteUp_Click);
+            // 
+            // ctxItemVoteDown
+            // 
+            this.ctxItemVoteDown.Image = global::Board_Explorer.Properties.Resources.arrow_down;
+            this.ctxItemVoteDown.Name = "ctxItemVoteDown";
+            this.ctxItemVoteDown.Size = new System.Drawing.Size(147, 22);
+            this.ctxItemVoteDown.Text = "Vote Down";
+            this.ctxItemVoteDown.Click += new System.EventHandler(this.ctxItemVoteDown_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(144, 6);
             // 
             // ctxItemDownload
             // 
             this.ctxItemDownload.Image = global::Board_Explorer.Properties.Resources.download_cloud;
             this.ctxItemDownload.Name = "ctxItemDownload";
-            this.ctxItemDownload.Size = new System.Drawing.Size(180, 22);
+            this.ctxItemDownload.Size = new System.Drawing.Size(147, 22);
             this.ctxItemDownload.Text = "Download";
             this.ctxItemDownload.Click += new System.EventHandler(this.ctxItemDownload_Click);
             // 
@@ -157,9 +197,37 @@
             this.strProgress});
             this.staStrip.Location = new System.Drawing.Point(0, 467);
             this.staStrip.Name = "staStrip";
-            this.staStrip.Size = new System.Drawing.Size(918, 22);
+            this.staStrip.Size = new System.Drawing.Size(934, 22);
             this.staStrip.TabIndex = 5;
             this.staStrip.Text = "stsStrip";
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.offlineModeToolStripMenuItem,
+            this.onlineModeToolStripMenuItem});
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 20);
+            this.toolStripSplitButton1.Text = "Online";
+            // 
+            // offlineModeToolStripMenuItem
+            // 
+            this.offlineModeToolStripMenuItem.Image = global::Board_Explorer.Properties.Resources.bullet_red;
+            this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
+            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.offlineModeToolStripMenuItem.Text = "Offline Mode";
+            this.offlineModeToolStripMenuItem.Click += new System.EventHandler(this.offlineModeToolStripMenuItem_Click);
+            // 
+            // onlineModeToolStripMenuItem
+            // 
+            this.onlineModeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("onlineModeToolStripMenuItem.Image")));
+            this.onlineModeToolStripMenuItem.Name = "onlineModeToolStripMenuItem";
+            this.onlineModeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.onlineModeToolStripMenuItem.Text = "Online Mode";
+            this.onlineModeToolStripMenuItem.Click += new System.EventHandler(this.onlineModeToolStripMenuItem_Click);
             // 
             // staStatusLabel
             // 
@@ -170,7 +238,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(640, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(656, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = " ";
             // 
@@ -188,7 +256,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(918, 24);
+            this.mnuMain.Size = new System.Drawing.Size(934, 24);
             this.mnuMain.TabIndex = 7;
             this.mnuMain.Text = "menuStrip1";
             // 
@@ -211,6 +279,8 @@
             // 
             this.mnuPosts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFavorites,
+            this.mnuFindByMd5,
+            this.toolStripSeparator6,
             this.mnuDownloadAll});
             this.mnuPosts.Name = "mnuPosts";
             this.mnuPosts.Size = new System.Drawing.Size(47, 20);
@@ -298,16 +368,21 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lblArtist);
+            this.groupBox1.Controls.Add(this.lblMd5);
+            this.groupBox1.Controls.Add(this.lnkSource);
+            this.groupBox1.Controls.Add(this.lblSource);
             this.groupBox1.Controls.Add(this.lblFavorites);
             this.groupBox1.Controls.Add(this.lblScore);
             this.groupBox1.Controls.Add(this.lblRating);
             this.groupBox1.Controls.Add(this.lblID);
             this.groupBox1.Controls.Add(this.lblTags);
             this.groupBox1.Controls.Add(this.lstTags);
-            this.groupBox1.Location = new System.Drawing.Point(708, 56);
+            this.groupBox1.Location = new System.Drawing.Point(684, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 400);
+            this.groupBox1.Size = new System.Drawing.Size(240, 400);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Info";
@@ -315,7 +390,7 @@
             // lblFavorites
             // 
             this.lblFavorites.AutoSize = true;
-            this.lblFavorites.Location = new System.Drawing.Point(6, 90);
+            this.lblFavorites.Location = new System.Drawing.Point(6, 110);
             this.lblFavorites.Name = "lblFavorites";
             this.lblFavorites.Size = new System.Drawing.Size(56, 13);
             this.lblFavorites.TabIndex = 5;
@@ -324,7 +399,7 @@
             // lblScore
             // 
             this.lblScore.AutoSize = true;
-            this.lblScore.Location = new System.Drawing.Point(6, 70);
+            this.lblScore.Location = new System.Drawing.Point(6, 90);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(38, 13);
             this.lblScore.TabIndex = 4;
@@ -333,7 +408,7 @@
             // lblRating
             // 
             this.lblRating.AutoSize = true;
-            this.lblRating.Location = new System.Drawing.Point(6, 50);
+            this.lblRating.Location = new System.Drawing.Point(6, 70);
             this.lblRating.Name = "lblRating";
             this.lblRating.Size = new System.Drawing.Size(41, 13);
             this.lblRating.TabIndex = 3;
@@ -359,10 +434,12 @@
             // 
             // lstTags
             // 
+            this.lstTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lstTags.FormattingEnabled = true;
             this.lstTags.Location = new System.Drawing.Point(6, 195);
             this.lstTags.Name = "lstTags";
-            this.lstTags.Size = new System.Drawing.Size(188, 199);
+            this.lstTags.Size = new System.Drawing.Size(228, 199);
             this.lstTags.TabIndex = 0;
             // 
             // btnNext
@@ -380,73 +457,61 @@
             this.ntfMain.Text = "ntfMain";
             this.ntfMain.Visible = true;
             // 
-            // toolStripSeparator4
+            // lblSource
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.lblSource.AutoSize = true;
+            this.lblSource.Location = new System.Drawing.Point(6, 150);
+            this.lblSource.Name = "lblSource";
+            this.lblSource.Size = new System.Drawing.Size(44, 13);
+            this.lblSource.TabIndex = 6;
+            this.lblSource.Text = "Source:";
             // 
-            // toolStripSeparator5
+            // lnkSource
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.lnkSource.AutoSize = true;
+            this.lnkSource.Location = new System.Drawing.Point(56, 150);
+            this.lnkSource.Name = "lnkSource";
+            this.lnkSource.Size = new System.Drawing.Size(27, 13);
+            this.lnkSource.TabIndex = 7;
+            this.lnkSource.TabStop = true;
+            this.lnkSource.Text = "Link";
+            this.lnkSource.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSource_LinkClicked);
             // 
-            // toolStripSplitButton1
+            // lblMd5
             // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.offlineModeToolStripMenuItem,
-            this.onlineModeToolStripMenuItem});
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 20);
-            this.toolStripSplitButton1.Text = "Online";
+            this.lblMd5.AutoSize = true;
+            this.lblMd5.Location = new System.Drawing.Point(6, 50);
+            this.lblMd5.Name = "lblMd5";
+            this.lblMd5.Size = new System.Drawing.Size(33, 13);
+            this.lblMd5.TabIndex = 8;
+            this.lblMd5.Text = "MD5:";
             // 
-            // offlineModeToolStripMenuItem
+            // lblArtist
             // 
-            this.offlineModeToolStripMenuItem.Image = global::Board_Explorer.Properties.Resources.bullet_red;
-            this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
-            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.offlineModeToolStripMenuItem.Text = "Offline Mode";
-            this.offlineModeToolStripMenuItem.Click += new System.EventHandler(this.offlineModeToolStripMenuItem_Click);
+            this.lblArtist.AutoSize = true;
+            this.lblArtist.Location = new System.Drawing.Point(6, 130);
+            this.lblArtist.Name = "lblArtist";
+            this.lblArtist.Size = new System.Drawing.Size(33, 13);
+            this.lblArtist.TabIndex = 10;
+            this.lblArtist.Text = "Artist:";
             // 
-            // onlineModeToolStripMenuItem
+            // mnuFindByMd5
             // 
-            this.onlineModeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("onlineModeToolStripMenuItem.Image")));
-            this.onlineModeToolStripMenuItem.Name = "onlineModeToolStripMenuItem";
-            this.onlineModeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.onlineModeToolStripMenuItem.Text = "Online Mode";
-            this.onlineModeToolStripMenuItem.Click += new System.EventHandler(this.onlineModeToolStripMenuItem_Click);
+            this.mnuFindByMd5.Name = "mnuFindByMd5";
+            this.mnuFindByMd5.Size = new System.Drawing.Size(182, 22);
+            this.mnuFindByMd5.Text = "Find By Image";
+            this.mnuFindByMd5.Click += new System.EventHandler(this.mnuFindByMd5_Click);
             // 
-            // ctxItemFavorite
+            // toolStripSeparator6
             // 
-            this.ctxItemFavorite.Image = global::Board_Explorer.Properties.Resources.heart_add;
-            this.ctxItemFavorite.Name = "ctxItemFavorite";
-            this.ctxItemFavorite.Size = new System.Drawing.Size(180, 22);
-            this.ctxItemFavorite.Text = "Favorite";
-            this.ctxItemFavorite.Click += new System.EventHandler(this.ctxItemFavorite_Click);
-            // 
-            // ctxItemVoteUp
-            // 
-            this.ctxItemVoteUp.Image = global::Board_Explorer.Properties.Resources.arrow_up;
-            this.ctxItemVoteUp.Name = "ctxItemVoteUp";
-            this.ctxItemVoteUp.Size = new System.Drawing.Size(180, 22);
-            this.ctxItemVoteUp.Text = "Vote Up";
-            this.ctxItemVoteUp.Click += new System.EventHandler(this.ctxItemVoteUp_Click);
-            // 
-            // ctxItemVoteDown
-            // 
-            this.ctxItemVoteDown.Image = global::Board_Explorer.Properties.Resources.arrow_down;
-            this.ctxItemVoteDown.Name = "ctxItemVoteDown";
-            this.ctxItemVoteDown.Size = new System.Drawing.Size(180, 22);
-            this.ctxItemVoteDown.Text = "Vote Down";
-            this.ctxItemVoteDown.Click += new System.EventHandler(this.ctxItemVoteDown_Click);
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(179, 6);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 489);
+            this.ClientSize = new System.Drawing.Size(934, 489);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.staStrip);
@@ -454,6 +519,7 @@
             this.Controls.Add(this.lstView);
             this.Controls.Add(this.txtTags);
             this.Controls.Add(this.btnSearch);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMain;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -516,6 +582,12 @@
         private System.Windows.Forms.ToolStripMenuItem ctxItemVoteDown;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.Label lblSource;
+        private System.Windows.Forms.LinkLabel lnkSource;
+        private System.Windows.Forms.Label lblMd5;
+        private System.Windows.Forms.Label lblArtist;
+        private System.Windows.Forms.ToolStripMenuItem mnuFindByMd5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     }
 }
 
