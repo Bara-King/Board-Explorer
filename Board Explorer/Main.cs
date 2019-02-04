@@ -418,33 +418,59 @@ namespace Board_Explorer
 
         private void ctxItemFavorite_Click(object sender, EventArgs e)
         {
-            Boolean online = post.Favorite(post_id);
-            if (online)
+            var favorites = local_db.GetCollection<Favorite>("favorite");
+            var favorite = favorites.FindOne(x => x.id == post_id);
+
+            if (favorite != null)
             {
-                staStatusLabel.Text = "Post #" + post_id + " added online and locally to favorites.";
+                Boolean online = post.UnFavorite(post_id);
+
+                if (online)
+                {
+                    staStatusLabel.Text = "Post #" + post_id + " removed online and locally from favorites.";
+                }
+                else
+                {
+                    staStatusLabel.Text = "Post #" + post_id + " removed from local favorites. Online connection failed.";
+                }
+                
+                try
+                {
+                    favorites.Delete(post_id);
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
             else
             {
-                staStatusLabel.Text = "Post #" + post_id + " added locally to favorites. Online connection failed.";
-            }
+                Boolean online = post.Favorite(post_id);
 
-            try
-            {
-                // Get customer collection
-                var favorites = local_db.GetCollection<Favorite>("favorite");
-
-                // Create your new customer instance
-                var favorite = new Favorite
+                if (online)
                 {
-                    id = post_id
-                };
+                    staStatusLabel.Text = "Post #" + post_id + " added online and locally to favorites.";
+                }
+                else
+                {
+                    staStatusLabel.Text = "Post #" + post_id + " added locally to favorites. Online connection failed.";
+                }
 
-                // Insert new customer document (Id will be auto-incremented)
-                favorites.Insert(favorite);
-            }
-            catch(Exception ex)
-            {
+                try
+                {
+                    // Create your new customer instance
+                    favorite = new Favorite
+                    {
+                        id = post_id
+                    };
 
+                    // Insert new customer document (Id will be auto-incremented)
+                    favorites.Insert(favorite);
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 

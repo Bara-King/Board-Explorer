@@ -15,3 +15,6 @@ You can:
 
 ## How To Help
 Any kind of help is welcome! You can help by testing the software and reporting errors or simply by buying me a [ko-fi](https://ko-fi.com/goatmew).
+
+## Download
+You can donload the latest production release [here](https://github.com/goatmew/Board-Explorer/releases).
