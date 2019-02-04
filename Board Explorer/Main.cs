@@ -52,6 +52,8 @@ namespace Board_Explorer
             post.Username = Board_Explorer.Properties.Settings.Default.Username;
             post.Apikey = Board_Explorer.Properties.Settings.Default.Apikey;
 
+            lnkSource.Visible = false;
+
             imgPosts.Images.Clear();
             lstView.Clear();
 
@@ -587,6 +589,14 @@ namespace Board_Explorer
                 txtTags.Text = "MD5:" + md5;
                 search();
             }
+        }
+
+        private void mnuTelegram_Click(object sender, EventArgs e)
+        {
+            var posts = local_db.GetCollection<Post>("post");
+            Post post = posts.FindOne(item => item.id == post_id);
+            String url = Uri.EscapeUriString(post.file_url);
+            System.Diagnostics.Process.Start("https://telegram.me/share/url?url=" + url + "&text=Shared with Board Explorer");
         }
     }
 }

@@ -80,6 +80,8 @@
             this.lblArtist = new System.Windows.Forms.Label();
             this.mnuFindByMd5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuShare = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTelegram = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxPost.SuspendLayout();
             this.staStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
@@ -130,40 +132,41 @@
             this.ctxItemVoteUp,
             this.ctxItemVoteDown,
             this.toolStripSeparator5,
-            this.ctxItemDownload});
+            this.ctxItemDownload,
+            this.mnuShare});
             this.ctxPost.Name = "ctxPost";
-            this.ctxPost.Size = new System.Drawing.Size(148, 132);
+            this.ctxPost.Size = new System.Drawing.Size(181, 176);
             // 
             // ctxItemOne621
             // 
             this.ctxItemOne621.Name = "ctxItemOne621";
-            this.ctxItemOne621.Size = new System.Drawing.Size(147, 22);
+            this.ctxItemOne621.Size = new System.Drawing.Size(180, 22);
             this.ctxItemOne621.Text = "Open on e621";
             this.ctxItemOne621.Click += new System.EventHandler(this.ctxItemOne621_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(144, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // ctxItemFavorite
             // 
             this.ctxItemFavorite.Image = global::Board_Explorer.Properties.Resources.heart_add;
             this.ctxItemFavorite.Name = "ctxItemFavorite";
-            this.ctxItemFavorite.Size = new System.Drawing.Size(147, 22);
+            this.ctxItemFavorite.Size = new System.Drawing.Size(180, 22);
             this.ctxItemFavorite.Text = "Favorite";
             this.ctxItemFavorite.Click += new System.EventHandler(this.ctxItemFavorite_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(144, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // ctxItemVoteUp
             // 
             this.ctxItemVoteUp.Image = global::Board_Explorer.Properties.Resources.arrow_up;
             this.ctxItemVoteUp.Name = "ctxItemVoteUp";
-            this.ctxItemVoteUp.Size = new System.Drawing.Size(147, 22);
+            this.ctxItemVoteUp.Size = new System.Drawing.Size(180, 22);
             this.ctxItemVoteUp.Text = "Vote Up";
             this.ctxItemVoteUp.Click += new System.EventHandler(this.ctxItemVoteUp_Click);
             // 
@@ -171,20 +174,20 @@
             // 
             this.ctxItemVoteDown.Image = global::Board_Explorer.Properties.Resources.arrow_down;
             this.ctxItemVoteDown.Name = "ctxItemVoteDown";
-            this.ctxItemVoteDown.Size = new System.Drawing.Size(147, 22);
+            this.ctxItemVoteDown.Size = new System.Drawing.Size(180, 22);
             this.ctxItemVoteDown.Text = "Vote Down";
             this.ctxItemVoteDown.Click += new System.EventHandler(this.ctxItemVoteDown_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(144, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // ctxItemDownload
             // 
             this.ctxItemDownload.Image = global::Board_Explorer.Properties.Resources.download_cloud;
             this.ctxItemDownload.Name = "ctxItemDownload";
-            this.ctxItemDownload.Size = new System.Drawing.Size(147, 22);
+            this.ctxItemDownload.Size = new System.Drawing.Size(180, 22);
             this.ctxItemDownload.Text = "Download";
             this.ctxItemDownload.Click += new System.EventHandler(this.ctxItemDownload_Click);
             // 
@@ -507,6 +510,21 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(179, 6);
             // 
+            // mnuShare
+            // 
+            this.mnuShare.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuTelegram});
+            this.mnuShare.Name = "mnuShare";
+            this.mnuShare.Size = new System.Drawing.Size(180, 22);
+            this.mnuShare.Text = "Share";
+            // 
+            // mnuTelegram
+            // 
+            this.mnuTelegram.Name = "mnuTelegram";
+            this.mnuTelegram.Size = new System.Drawing.Size(180, 22);
+            this.mnuTelegram.Text = "Telegram";
+            this.mnuTelegram.Click += new System.EventHandler(this.mnuTelegram_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,6 +606,8 @@
         private System.Windows.Forms.Label lblArtist;
         private System.Windows.Forms.ToolStripMenuItem mnuFindByMd5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem mnuShare;
+        private System.Windows.Forms.ToolStripMenuItem mnuTelegram;
     }
 }
 
