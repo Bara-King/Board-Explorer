@@ -282,6 +282,8 @@ namespace Board_Explorer
             lblArtist.Text = "Artist:";
             lnkSource.Links.Clear();
             lnkSource.Visible = false;
+            lblFilesize.Text = "Filesize:";
+            lblDimensions.Text = "Dimensions:";
             lstTags.Items.Clear();
         }
 
@@ -317,6 +319,9 @@ namespace Board_Explorer
 
             lnkSource.Links.Add(0, 4, post.source);
             lnkSource.Visible = true;
+
+            lblFilesize.Text = "Filesize: " + Utilities.FileSize(post.file_size);
+            lblDimensions.Text = "Dimensions: " + post.width + " x " + post.height;
 
             lstTags.Items.Clear();
             foreach(string tag in post.tags.Split(null))
