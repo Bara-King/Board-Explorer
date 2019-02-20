@@ -73,7 +73,12 @@ namespace Board_Explorer
 
             checkUpdatesAsync();
 
+            //var colTags = local_db.GetCollection<Tag>("tag");
+            //string[] output = (from o in colTags.FindAll().ToList() select o.name).ToArray();
 
+            //AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
+            //auto.AddRange(output);
+            //txtTags.AutoCompleteCustomSource = auto;
         }
 
         public async void checkUpdatesAsync()
@@ -169,10 +174,6 @@ namespace Board_Explorer
 
             foreach (Post post in posts)
             {
-
-
-                nextBatch = "&before_id=" + post.id;
-
                 Thread thread = new Thread(() => AsyncAddItem(post));
                 thread.Start();
 
@@ -182,6 +183,8 @@ namespace Board_Explorer
 
                     // Insert new customer document (Id will be auto-incremented)
                     dbPosts.Insert(post);
+
+                    
                 }
                 catch (Exception ex)
                 {
@@ -270,6 +273,11 @@ namespace Board_Explorer
         private Boolean ThumbExists(Post post)
         {
             return File.Exists(Path.Combine(thumbsDirectory, post.md5 + "." + post.file_ext));
+        }
+
+        private Boolean OriginalExists(Post post)
+        {
+            return File.Exists(Path.Combine(originalsDirectory, post.md5 + "." + post.file_ext));
         }
 
         public void ClearUI()
@@ -519,16 +527,25 @@ namespace Board_Explorer
 
                 foreach (Post post in posts)
                 {
-                    post.Download();
+                    if (!OriginalExists(post)){
+                        post.Download();
 
-                    post.onDownloadCompleted += FileDownloaded;
+                        post.onDownloadCompleted += FileDownloaded;
+                    }
+                    else
+                    {
+                        strProgress.Value += 1;
+                    }
                 }
             }
         }
 
         private void FileDownloaded(object sender, EventArgs e)
         {
-            strProgress.Value += 1;
+            if (strProgress.Maximum > strProgress.Value)
+            {
+                strProgress.Value += 1;
+            }
         }
 
         private void mnuFavorites_Click(object sender, EventArgs e)
@@ -631,6 +648,95 @@ namespace Board_Explorer
             Post post = posts.FindOne(item => item.id == post_id);
             String url = Uri.EscapeUriString(post.file_url);
             System.Diagnostics.Process.Start("https://telegram.me/share/url?url=" + url + "&text=Shared with Board Explorer");
+        }
+
+        private void mnuSyncTags_Click(object sender, EventArgs e)
+        {
+            
+
+            Thread thread = new Thread(() => AsyncAddTags(1));
+            thread.Start();
+        }
+
+        private void AsyncAddTags(int page)
+        {
+            var dbTags = local_db.GetCollection<Tag>("tag");
+            dbTags.EnsureIndex("name", true);
+
+            int limit = 500;
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("limit", limit);
+            parameters.Add("page", page);
+            List<Tag> tags = JsonConvert.DeserializeObject<List<Tag>>(e621.Tag.Search(parameters));
+
+            foreach (Tag tag in tags)
+            {
+                try
+                {
+                    dbTags.Insert(tag);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ex. Saving Tag: " + tag.name + " - " + ex.ToString());
+                }
+            }
+
+            if (tags.Count == limit)
+            {
+                page++;
+                Thread.Sleep(500);
+                Thread thread = new Thread(() => AsyncAddTags(page));
+                thread.Start();
+            }
+        }
+
+        private void mnuSyncFavorites_Click(object sender, EventArgs e)
+        {
+            syncFavorites(1);
+        }
+
+        private void syncFavorites(int page)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("page", page);
+            parameters.Add("limit", limit);
+            posts = JsonConvert.DeserializeObject<List<Post>>(Post.Search("fav:" + Properties.Settings.Default.Username, parameters));
+
+            var dbPosts = local_db.GetCollection<Post>("post");
+            var dbFavorites = local_db.GetCollection<Favorite>("favorite");
+
+            foreach (Post post in posts)
+            {
+                try
+                {
+                    dbPosts.Insert(post);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                try
+                {
+                    Favorite favorite = new Favorite
+                    {
+                        id = post.id
+                    };
+
+                    dbFavorites.Insert(favorite);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+            if(posts.Count == limit)
+            {
+                page++;
+                syncFavorites(page);
+            }
         }
     }
 }

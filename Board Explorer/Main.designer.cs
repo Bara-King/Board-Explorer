@@ -63,6 +63,8 @@
             this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuSyncTags = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuOpenDownloads = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRelease = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +86,7 @@
             this.lstTags = new System.Windows.Forms.ListBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.ntfMain = new System.Windows.Forms.NotifyIcon(this.components);
+            this.mnuSyncFavorites = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxPost.SuspendLayout();
             this.staStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
@@ -102,6 +105,8 @@
             // 
             // txtTags
             // 
+            this.txtTags.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtTags.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtTags.Location = new System.Drawing.Point(12, 29);
             this.txtTags.Name = "txtTags";
             this.txtTags.Size = new System.Drawing.Size(273, 20);
@@ -337,6 +342,9 @@
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSettings,
             this.toolStripSeparator1,
+            this.mnuSyncFavorites,
+            this.mnuSyncTags,
+            this.toolStripSeparator7,
             this.mnuOpenDownloads});
             this.mnuTools.Name = "mnuTools";
             this.mnuTools.Size = new System.Drawing.Size(47, 20);
@@ -353,6 +361,18 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(193, 6);
+            // 
+            // mnuSyncTags
+            // 
+            this.mnuSyncTags.Name = "mnuSyncTags";
+            this.mnuSyncTags.Size = new System.Drawing.Size(196, 22);
+            this.mnuSyncTags.Text = "Sync Tags";
+            this.mnuSyncTags.Click += new System.EventHandler(this.mnuSyncTags_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(193, 6);
             // 
             // mnuOpenDownloads
             // 
@@ -547,6 +567,13 @@
             this.ntfMain.Text = "ntfMain";
             this.ntfMain.Visible = true;
             // 
+            // mnuSyncFavorites
+            // 
+            this.mnuSyncFavorites.Name = "mnuSyncFavorites";
+            this.mnuSyncFavorites.Size = new System.Drawing.Size(196, 22);
+            this.mnuSyncFavorites.Text = "Sync Favorites";
+            this.mnuSyncFavorites.Click += new System.EventHandler(this.mnuSyncFavorites_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,6 +659,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTelegram;
         private System.Windows.Forms.Label lblFilesize;
         private System.Windows.Forms.Label lblDimensions;
+        private System.Windows.Forms.ToolStripMenuItem mnuSyncTags;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem mnuSyncFavorites;
     }
 }
 
